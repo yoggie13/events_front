@@ -7,13 +7,18 @@ export default function Events() {
     const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(false)
 
+    useEffect(() => {
+        setLoading(true)
+        getEvents();
+    }, [])
+
     const getEvents = async () => {
         var res = await event_service.getEvents();
 
         if (res.status === 200) {
             res.json()
                 .then(response => {
-                    setEvents(events);
+                    setEvents(response.data);
                     setLoading(false);
                 })
         }
@@ -23,17 +28,12 @@ export default function Events() {
         }
     }
 
-    useEffect(() => {
-        setLoading(true)
-        getEvents();
-    }, [])
-
     return (
         <div>
             {
                 loading
                     ? null
-                    : events.map(event => <Event info={event} />)
+                    : events.map((event, index) => <Event key={index} data={event} />)
             }
         </div>
 

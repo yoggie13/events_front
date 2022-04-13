@@ -1,12 +1,11 @@
 // const url_main = process.env.REACT_APP_API_ENDPOINT;
-const url_main = "http://127.0.0.1/5000";
+const url_main = "http://127.0.0.1:5000/";
 
 const headers_main = {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Credentials': true,
     'Access-Control-Allow-Headers': 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept',
-    'Access-Control-Allow-Origin': '*',
-    "withCredentials": "include"
+    'Access-Control-Allow-Origin': '*'
 }
 
 export default class api {
@@ -18,10 +17,10 @@ export default class api {
                 method: "GET",
                 mode: "cors",
                 headers: headers_main,
-                credentials: 'include',
-                xhrFields: {
-                    "withCredentials": 'true',
-                }
+                // credentials: 'include',
+                // xhrFields: {
+                //     "withCredentials": 'true',
+                // }
             })
             .catch(error => {
                 console.log(error);
@@ -34,10 +33,10 @@ export default class api {
                 method: "POST",
                 mode: "cors",
                 headers: headers_main,
-                credentials: 'include',
-                xhrFields: {
-                    "withCredentials": true,
-                },
+                // credentials: 'include',
+                // xhrFields: {
+                //     "withCredentials": true,
+                // },
                 body: JSON.stringify(data)
             })
             .catch(error => {
@@ -51,10 +50,10 @@ export default class api {
                 method: "PUT",
                 mode: "cors",
                 headers: headers_main,
-                credentials: 'include',
-                xhrFields: {
-                    "withCredentials": true,
-                },
+                // credentials: 'include',
+                // xhrFields: {
+                //     "withCredentials": true,
+                // },
                 body: JSON.stringify(data)
             })
             .catch(error => {
@@ -68,10 +67,10 @@ export default class api {
                 method: "DELETE",
                 mode: "cors",
                 headers: headers_main,
-                credentials: 'include',
-                xhrFields: {
-                    "withCredentials": true,
-                },
+                // credentials: 'include',
+                // xhrFields: {
+                //     "withCredentials": true,
+                // },
             })
             .catch(error => {
                 console.log(error);
