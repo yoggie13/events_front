@@ -41,6 +41,11 @@ export default function Filter({ setFilter }) {
             setFilter(e.target.id)
     }
 
+    const addLocation = (e) => {
+        e.preventDefault();
+        console.log('click')
+    }
+
     useEffect(() => {
         setLoading(true)
         getLocations()
@@ -51,18 +56,24 @@ export default function Filter({ setFilter }) {
             {
                 loading
                     ? null
-                    : <ul>
-                        {
-                            filters.map((filter, index) =>
-                                <li
-                                    id={filter.loc_link_part}
-                                    key={index}
-                                    onClick={e => applyFilter(e, index)}
-                                    className={filter.checked ? 'checked' : 'unchecked'}
-                                >{filter.loc_name}</li>
-                            )
-                        }
-                    </ul>}
+                    : <>
+                        <ul>
+                            {
+                                filters.map((filter, index) =>
+                                    <li
+                                        id={filter.loc_link_part}
+                                        key={index}
+                                        onClick={e => applyFilter(e, index)}
+                                        className={filter.checked ? 'checked' : 'unchecked'}
+                                    >{filter.loc_name}</li>
+                                )
+                            }
+                            <li>
+                                <i id='addLocation' class="fas fa-plus-circle fa-lg" onClick={e => addLocation(e)}></i>
+                            </li>
+                        </ul>
+                    </>
+            }
         </div>
     )
 }

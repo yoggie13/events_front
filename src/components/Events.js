@@ -15,7 +15,7 @@ export default function Events({ filter }) {
     const getEvents = async () => {
 
         var res = [];
-        console.log(filter)
+
         if (filter === undefined)
             res = await event_services.getEvents();
         else

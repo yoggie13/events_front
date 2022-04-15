@@ -97,6 +97,7 @@ h5{
 
 .Filter{
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 
 .Filter ul {
@@ -130,3 +131,6 @@ h5{
   cursor: pointer;
 }
 
+#addLocation{
+  color: rgb(84, 51, 255);
+}
