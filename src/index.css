@@ -134,3 +134,23 @@ h5{
 #addLocation{
   color: rgb(84, 51, 255);
 }
+#addLocationInput {
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: Quicksand, -apple-system, Roboto, "Helvetica Neue", Helvetica, sans-serif;
+  margin-right: 6px;
+  padding: 4px 6px 4px 6px;
+  width: 200px;
+}
+.addLocationButton{
+  background-color: rgb(84, 51, 255);
+  color: white;
+  font-size: 16px;
+  font-family: Quicksand, -apple-system, Roboto, "Helvetica Neue", Helvetica, sans-serif;
+  border-radius: 8px;
+  border: 0px;
+  padding: 4px 8px 4px 8px;
+}
+.addLocationButton:hover{
+  cursor: pointer;
+}

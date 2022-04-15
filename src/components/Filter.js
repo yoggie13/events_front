@@ -5,7 +5,8 @@ import location_services from '../services/location_services'
 export default function Filter({ setFilter }) {
     const [filters, setFilters] = useState(["all"])
     const [loading, setLoading] = useState(false)
-
+    const [addLocationOpen, setAddLocationOpen] = useState(false)
+    const [locationValue, setLocationValue] = useState("")
 
     const getLocations = async () => {
         var res = await location_services.getLocations()
@@ -41,9 +42,23 @@ export default function Filter({ setFilter }) {
             setFilter(e.target.id)
     }
 
-    const addLocation = (e) => {
+    const openLocation = (e) => {
         e.preventDefault();
-        console.log('click')
+        setAddLocationOpen(true)
+    }
+
+    const addLocation = async (e) => {
+        e.preventDefault();
+
+        if (locationValue === undefined || locationValue === null || locationValue === "")
+            setAddLocationOpen(false)
+
+        var res = await location_services.addNewLocation(locationValue)
+
+        if (res.status === 200)
+            setAddLocationOpen(false)
+        else
+            alert("Greška, pokušaj ponovo")
     }
 
     useEffect(() => {
@@ -69,11 +84,27 @@ export default function Filter({ setFilter }) {
                                 )
                             }
                             <li>
-                                <i id='addLocation' class="fas fa-plus-circle fa-lg" onClick={e => addLocation(e)}></i>
+                                {
+                                    addLocationOpen
+                                        ? <div className='addLocationOpen'>
+                                            <input
+                                                type='text'
+                                                id='addLocationInput'
+                                                placeholder='Unesi link do fb stranice'
+                                                value={locationValue}
+                                                onChange={e => {
+                                                    e.preventDefault()
+                                                    setLocationValue(e.target.value)
+                                                }}
+                                            />
+                                            <button className='addLocationButton' onClick={e => addLocation(e)}>ok</button>
+                                        </div>
+                                        : <i id='addLocation' class="fas fa-plus-circle fa-lg" onClick={e => openLocation(e)}></i>
+                                }
                             </li>
                         </ul>
                     </>
             }
-        </div>
+        </div >
     )
 }
