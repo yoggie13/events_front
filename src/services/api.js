@@ -1,5 +1,5 @@
 // const url_main = process.env.REACT_APP_API_ENDPOINT;
-const url_main = "http://127.0.0.1:5000/";
+const url_main = "https://ognjenseventsapp.herokuapp.com/";
 
 const headers_main = {
     'Content-Type': 'application/json',
